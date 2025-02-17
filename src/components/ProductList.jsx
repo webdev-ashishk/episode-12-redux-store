@@ -22,9 +22,8 @@ export default function ProductList() {
   console.log(data);
   return (
     <section>
-      <h1>ProductList!</h1>
       {data.length === 0 ? (
-        <h3 className="text-center font-bold text-2xl bg-purple-500 h-[100vh]">
+        <h3 className="text-center font-bold text-2xl bg-purple-500">
           Loading.....
         </h3>
       ) : (
