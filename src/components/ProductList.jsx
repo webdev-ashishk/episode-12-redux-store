@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { addItems } from '../utils/cartSlice';
 export default function ProductList() {
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
   useEffect(() => {
     fetchProductData();
   }, []);
@@ -20,6 +22,9 @@ export default function ProductList() {
     }
   }
   console.log(data);
+  const handleAddItems = (element) => {
+    dispatch(addItems(element));
+  };
   return (
     <section>
       {data.length === 0 ? (
@@ -35,7 +40,10 @@ export default function ProductList() {
             >
               <li>{element.name}</li>
               <li>{element.website}</li>
-              <button className="bg-yellow-800 p-2 m-2 text-center">
+              <button
+                className="bg-yellow-800 p-2 m-2 text-center"
+                onClick={() => handleAddItems(element)}
+              >
                 Add+
               </button>
             </div>
